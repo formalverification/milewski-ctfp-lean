@@ -60,10 +60,22 @@ namespace snippet11
     | Just x  => Just (f x)
 end snippet11
 
-namespace snippet12
 
--- snippet 12
-def length {a} : List a → Const Int a := λ l => match l with
-  | []      => Const 0
-  | (_::xs) => Const (1 + unConst (length xs))
+namespace snippet12
+  inductive Const (c : Type)(a : Type) : Type where
+    | const : c → Const c a
+
+  open Const
+
+  class Functor (f : Type → Type) where
+    fmap : (a → b) → f a → f b
+
+  instance {c : Type} : Functor (Const c) where
+    fmap := λ _ (const v) => const v
+
+  -- snippet 12
+  def length : List Nat → Const Nat a := λ l => match l with
+    | []      => const 0
+    | (_::xs) => const (Nat.succ (length xs))
+
 end snippet12
