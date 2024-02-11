@@ -1,6 +1,6 @@
--- 6 Simple Algebraic Data Types
+-- 6 Simple Algebraic Data Types ------------------------------------------------
 
--- 6.1 Product Types
+-- 6.1 Product Types ------------------------------------------------------------
 
 -- snippet 01
 def swap : a × b → b × a := λ ⟨x, y⟩ => ⟨y, x⟩
@@ -60,7 +60,7 @@ namespace snippet14
     λ ⟨s, t, _⟩ => t.isPrefixOf s
 end snippet14
 
--- 6.2 Records (Structures)
+-- 6.2 Records ------------------------------------------------------------------
 
 -- snippet 15
 structure Element where
@@ -82,6 +82,7 @@ def elemToTuple : Element → String × String × Int :=
 #check atomicNumber
 -- Element.atomicNumber (self : Element) : Int
 
+
 namespace snippet19
 -- snippet 19
 def startsWithSymbol : Element → Bool :=
@@ -93,7 +94,7 @@ infix:50 "isPrefixOf" => String.isPrefixOf
 def startsWithSymbol' : Element → Bool :=
   λ e => e.symbol isPrefixOf e.name
 
--- 6.3 Sum Types
+-- 6.3 Sum Types ----------------------------------------------------------------
 
 -- snippet 21
 inductive Either (a b : Type) : Type where
@@ -153,8 +154,7 @@ namespace snippet30and31
     | Cons _ xs => Just xs
 end snippet30and31
 
--- 6.4 Algebra of Types
-
+-- 6.4 Algebra of Types ---------------------------------------------------------
 variable (a b c : Type)
 -- snippet 32
 #check a × Either b c

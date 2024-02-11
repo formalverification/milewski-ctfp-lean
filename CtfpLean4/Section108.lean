@@ -179,7 +179,6 @@ namespace snippet15thru26
 end snippet15thru26
 
 -- 8.7 Profunctors --------------------------------------------------------------
-
 namespace snippet29and30
   -- snippet 29
   class Profunctor (p : Type → Type → Type)  where
